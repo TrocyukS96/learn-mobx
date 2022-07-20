@@ -1,11 +1,14 @@
 import s from './index.module.scss';
+import counter from './../../store/counter'
+import {observer} from "mobx-react-lite";
 
-export const Counter = () => {
+// const {count, decrement, increment} = counter
+export const Counter = observer(() => {
     return (
         <div className={s.counter}>
-            <button>+</button>
-            <span>value</span>
-            <button>-</button>
+            <button onClick={() => counter.increment()}>+</button>
+            <span>{counter.count}</span>
+            <button onClick={() => counter.decrement()}>-</button>
         </div>
     )
-}
+})

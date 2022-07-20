@@ -7,6 +7,7 @@ function App() {
     <div className={s.app}>
       <h1><span>1.</span>Counter</h1>
         <Counter/>
+        <h1><span>2.</span>Todolist</h1>
     </div>
   );
 }
