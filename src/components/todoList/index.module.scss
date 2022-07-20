@@ -1,0 +1,25 @@
+.todoList{
+  width: 700px;
+  margin-left: 10%;
+  background: aquamarine;
+.addTodoBlock{
+  margin-bottom: 10px;
+  h2{
+    span,button{
+      margin: 0 10px;
+    }
+
+  }
+
+}
+
+
+  .items{
+    .item{
+      padding: 5px;
+      display: grid;
+      grid-template-columns: 80% 10% 10%;
+      border: 2px solid;
+    }
+  }
+}

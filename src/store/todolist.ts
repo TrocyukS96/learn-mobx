@@ -1,7 +1,7 @@
 import {makeAutoObservable} from "mobx";
 
 interface ITodo {
-    id: number,
+    id: string | number,
     title: string,
     completed: boolean
 }
@@ -21,10 +21,10 @@ class Todolist {
         this.todos.push(todo)
     }
 
-    remove(id: number) {
+    remove(id: string | number) {
         this.todos = this.todos.filter(t => t.id !== id)
     }
-    changeStatus(id:number){
+    changeStatus(id:string | number){
         this.todos = this.todos.map(t=>t.id === id ? {...t,completed:!t.completed} : t)
     }
 }
