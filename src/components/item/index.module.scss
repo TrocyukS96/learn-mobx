@@ -1,0 +1,16 @@
+.item{
+  width: 300px;
+  padding: 5px;
+  display: grid;
+  grid-template-columns: 60% 10% 30%;
+  border: 2px solid #c7d36e;
+  background: white;
+  gap: 20px;
+  cursor: grab;
+
+
+  button{
+    width: 50px;
+    height: 30px;
+  }
+}

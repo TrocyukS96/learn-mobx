@@ -1,16 +1,18 @@
 import {makeAutoObservable} from "mobx";
 
-interface ITodo {
+export interface ITodo {
     id: string | number,
     title: string,
     completed: boolean
+    order: number
 }
 
 class Todolist {
     todos: ITodo[] = [
-        {id: 1, title: 'learn mobx', completed: false},
-        {id: 2, title: 'go to the cinema', completed: false},
-        {id: 3, title: 'go for running', completed: true},
+        {id: 1, title: 'learn mobx', completed: false, order: 3},
+        {id: 2, title: 'go to the cinema', completed: false, order: 1},
+        {id: 3, title: 'go for running', completed: true, order: 2},
+        {id: 4, title: 'go for running', completed: true, order: 4},
     ]
 
     constructor() {
@@ -24,8 +26,22 @@ class Todolist {
     remove(id: string | number) {
         this.todos = this.todos.filter(t => t.id !== id)
     }
-    changeStatus(id:string | number){
-        this.todos = this.todos.map(t=>t.id === id ? {...t,completed:!t.completed} : t)
+
+    changeStatus(id: string | number) {
+        this.todos = this.todos.map(t => t.id === id ? {...t, completed: !t.completed} : t)
+    }
+
+    changeArrOfCards(card: ITodo, currentCard: ITodo) {
+        this.todos.map(c => {
+                if (c.id === card.id) {
+                    return {...c, order: currentCard.order}
+                }
+                if (c.id === currentCard.id) {
+                    return {...c, order: card.order}
+                }
+                return c
+            }
+        )
     }
 }
 
