@@ -2,16 +2,19 @@ import s from './index.module.scss'
 import todolist from './../../store/todolist';
 import Todolist, {ITodo} from './../../store/todolist';
 import {v4} from 'uuid';
-import React, {ChangeEvent, useState} from "react";
+import React, {ChangeEvent, useEffect, useState} from "react";
 import {Item} from "../item/Item";
 import {observer} from "mobx-react-lite";
-import {sortCards} from "../../utils/sortCards";
-
 
 export const TodoList = observer(() => {
+    const [todoListList, setTodoListList] = useState<ITodo[]>(todolist.todos)
 
     const [currentCard, setCurrentCard] = useState({} as ITodo)
     const [value, setValue] = useState('')
+
+    useEffect(() => {
+        setTodoListList(todolist.todos)
+    }, [currentCard])
 
     const setValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setValue(e.currentTarget.value);
@@ -31,13 +34,12 @@ export const TodoList = observer(() => {
                 </h2>
             </div>
             <div className={s.items}>
-                {todolist.todos.map((t, index) => {
+                {todoListList.map((t, index) => {
                     return (
-                        <Item id={t.id} title={t.title}
-                              completed={t.completed}
+                        <Item card={t}
+                              key={index}
                               currentCard={currentCard}
                               setCurrentCard={setCurrentCard}
-                              order={t.order}
                         />
                     )
                 })}

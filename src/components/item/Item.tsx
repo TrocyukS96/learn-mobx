@@ -5,18 +5,14 @@ import {observer} from "mobx-react-lite";
 import Todolist, {ITodo} from "../../store/todolist";
 
 interface IProps {
-    title: string
-    completed: boolean
-    id: string | number
     currentCard: ITodo
     setCurrentCard: (card: ITodo) => void
-    order: number
+    card:ITodo
 }
 
 export const Item: FC<IProps> = observer((
     {
-        id, completed, order,
-        title, currentCard, setCurrentCard
+        currentCard, setCurrentCard,card
     }
 ) => {
 
@@ -58,7 +54,7 @@ export const Item: FC<IProps> = observer((
             key={v4()}
             className={s.item}
             draggable={true}
-            onDragStart={(e) => onDragStartHandler(e, {completed, title, id, order})}
+            onDragStart={(e) => onDragStartHandler(e, card)}
             //срабатывает в тот момент, когда взяли карточку
             onDragLeave={(e) => onDragLeaveHandler(e)}
             //срабатывает, когда мы вышли за пределы другой карточки
@@ -66,13 +62,13 @@ export const Item: FC<IProps> = observer((
             //срабатывает, если мы отпустили перемещение
             onDragOver={(e) => onDragOverHandler(e)}
             //срабатывает, если мы находимся над каким-либо другим элементом
-            onDrop={(e) => onDropHandler(e, {completed, title, id, order})}
+            onDrop={(e) => onDropHandler(e, card)}
             //срабатывает, если мы отпустили карточку и расчитываем что должно произойти какое-то связанное с этим действие
         >
-            <div>{title}</div>
-            <input type="checkbox" checked={completed}
-                   onChange={() => changeStatusHandler(id)}/>
-            <button onClick={() => deleteTodoHandler(id)}>delete</button>
+            <div>{card.title}</div>
+            <input type="checkbox" checked={card.completed}
+                   onChange={() => changeStatusHandler(card.id)}/>
+            <button onClick={() => deleteTodoHandler(card.id)}>delete</button>
         </div>
     )
 })

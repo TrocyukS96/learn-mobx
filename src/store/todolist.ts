@@ -1,4 +1,5 @@
 import {makeAutoObservable} from "mobx";
+import {sortCards} from "../utils/sortCards";
 
 export interface ITodo {
     id: string | number,
@@ -32,7 +33,7 @@ class Todolist {
     }
 
     changeArrOfCards(card: ITodo, currentCard: ITodo) {
-        this.todos.map(c => {
+        this.todos = this.todos.sort(sortCards).map(c => {
                 if (c.id === card.id) {
                     return {...c, order: currentCard.order}
                 }
