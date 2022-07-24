@@ -1,0 +1,39 @@
+.cardDesk {
+  width: 1200px;
+  background: #e16292;
+  margin: 0 auto;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  .items {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+
+    .item {
+      width: 200px;
+      height: 250px;
+      padding: 9px;
+      text-align: left;
+      background: white;
+      border-radius: 7px;
+
+      .tasks {
+        padding: 10px 5px 0;
+
+        .task{
+          margin: 6px 0;
+          padding: 7px;
+          background: antiquewhite;
+          border-radius: 7px;
+          border: 2px solid indianred;
+        }
+
+      }
+    }
+  }
+}

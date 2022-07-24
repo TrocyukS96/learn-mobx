@@ -3,6 +3,7 @@ import s from './App.module.scss';
 import {Counter} from "../components/counter/Counter";
 import TodoList from "../components/todoList/TodoList";
 import {DragTodoList} from "../components/dragTodoList/DragTodoList";
+import {TasksDesk} from "../components/tasksDesk/tasksDesk";
 
 function App() {
     return (
@@ -13,6 +14,9 @@ function App() {
             <TodoList/>
             <h1><span>3.</span>Training how to do drag&drop without mobX</h1>
             <DragTodoList/>
+            <h1><span>4.</span>Tasks desk</h1>
+            <TasksDesk/>
+
         </div>
     );
 }
